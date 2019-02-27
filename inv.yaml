@@ -1,0 +1,37 @@
+all:
+
+  children:
+
+    newbies:
+      hosts:
+
+    debian:
+      hosts:
+        10.1.1.12
+
+    ubuntu:
+      hosts:
+        10.1.1.11
+        10.1.1.13
+
+    centos:
+      hosts:
+        10.1.1.14
+
+    fedora:
+      hosts:
+        10.1.1.15
+
+    aptservers:
+      hosts:
+        10.1.1.11
+        10.1.1.12
+        10.1.1.13
+
+    yumservers:
+      hosts:
+        10.1.1.14
+
+    dnfservers:
+      hosts:
+        10.1.1.15

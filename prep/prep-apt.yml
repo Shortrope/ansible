@@ -1,0 +1,21 @@
+---
+- hosts: aptservers
+  gather_facts: False
+
+  tasks:
+
+    - name: upadate and upgrade
+      raw: apt-get update && apt-get upgrade -y
+
+    - name: Install Python
+      raw: test -e /usr/bin/python || apt-get install -y python
+
+    - name: Create /root/.ssh
+      file: path=/root/.ssh state=directory mode=0700
+
+    - name: Create /root/.ssh/authorized_keys
+      file: path=/root/.ssh/authorized_keys state=touch mode=0700
+
+    - name: Create authorized_keys
+      lineinfile: dest=/root/.ssh/authorized_keys line="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+
