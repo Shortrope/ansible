@@ -1,0 +1,19 @@
+---
+- hosts: aptservers:yumservers:dnfservers
+  tasks:
+
+  - name: install utils
+    package:
+      name: "{{ item }}"
+    with_items:
+      - sudo
+      - tmux
+      - man-db  
+      - curl
+      - wget
+    ignore_errors: yes
+
+  - name: install which
+    package:
+      name: which
+    ignore_errors: yes

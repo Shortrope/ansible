@@ -1,0 +1,15 @@
+---
+# Get the hosts in an inventory group and write it to a local file
+
+- hosts: local
+  vars:
+    inv_file: /root/ansible/exercises/invgroup.txt
+  tasks:
+  - name: Create group inventory file
+    file:
+      path: "{{ inv_file }}"
+      state: touch
+  - name: Edit file with the inventory list
+    lineinfile:
+      path: "{{ inv_file }}"
+      line: "{{ groups['aptservers']|join(' ') }}"

@@ -6,7 +6,7 @@
     - name: yum update
       raw: yum update -y
     - name: Install Python
-      raw: test -e /usr/bin/python || yum install -y python
+      raw: test -e /usr/bin/python || (yum install -y python libselinux-python)
 
     - name: Create /root/.ssh
       file: path=/root/.ssh state=directory mode=0700
@@ -14,5 +14,5 @@
     - name: Create /root/.ssh/authorized_keys
       file: path=/root/.ssh/authorized_keys state=touch mode=0700
 
-    - name: Create authorized_keys
+    - name: Add key to authorized_keys
       lineinfile: dest=/root/.ssh/authorized_keys line="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"

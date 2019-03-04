@@ -1,3 +1,9 @@
+[local]
+127.0.0.1
+
+[local:vars]
+ansible_connection=local
+
 [debian]
 10.1.1.12
 
@@ -10,7 +16,6 @@
 [fedora]
 10.1.1.15
 
-
 [aptservers]
 10.1.1.11
 10.1.1.12
@@ -21,3 +26,4 @@
 
 [dnfservers]
 10.1.1.15
+

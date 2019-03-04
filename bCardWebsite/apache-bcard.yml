@@ -1,0 +1,16 @@
+---
+- hosts: bcard
+  tasks:
+  - name: install apache
+    package:
+      name: httpd
+      state: present
+  - name:
+    service:
+      name: httpd
+      enabled: yes
+  - name: copy html and css files
+    copy:
+      src: ./Bootstrap/
+      dest: /var/www/html/
+

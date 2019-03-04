@@ -1,0 +1,22 @@
+# ansible-playbook magicvars_user_list.yml -e @users.lst
+
+---
+- hosts: local
+  vars:
+    userfile: /root/ansible/exercises/users.txt
+  vars_files:
+    - /root/ansible/exercises/users.lst
+  tasks:
+  - name: Create file
+    file: 
+      path: "{{ userfile }}"
+      state: touch
+  - name: Edit file
+    lineinfile:
+      path: "{{ userfile }}"
+      line: "{{ item }}"
+    with_items:
+      - "{{ staff }}"
+      - "{{ faculty }}"
+      - "{{ other }}"
+...
